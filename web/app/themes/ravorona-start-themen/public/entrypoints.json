@@ -1,0 +1,25 @@
+{
+  "editor": {
+    "js": [
+      "editor-907b9945.js"
+    ],
+    "css": [
+      "editor-ffba5fd5.css"
+    ],
+    "dependencies": []
+  },
+  "main": {
+    "js": [
+      "main-0ac0f828.js"
+    ],
+    "css": [
+      "main-7b26d08c.css"
+    ],
+    "dependencies": []
+  },
+  "whyte.woff2": {
+    "js": [],
+    "css": [],
+    "dependencies": []
+  }
+}
