@@ -22,7 +22,7 @@
 /**
  * Shared
  */
-@import 'shared';
+// @import 'shared';
 
 /**
  * Reset
@@ -32,14 +32,49 @@
 /**
  * Components
  */
-@import 'components';
+// @import 'components';
 
 /**
  * Layout
  */
-@import 'layouts';
+// @import 'layouts';
 
 /**
  * Tools
  */
-@import 'tools';
+// @import 'tools';
+
+body {
+    background-color: #EEE;
+}
+header.banner {
+    background-color: #222;
+    color: #FFF;
+}
+footer {
+    background-color: #444;
+    color: #FFF;
+}
+.contentWrapper {
+    display: grid;
+    grid-auto-columns: 1fr 450px;
+    > main {
+        grid-column: 1;
+    }
+    > aside {
+        grid-column: 2;
+    }
+}
+main {
+    background-color: #999;
+}
+aside {
+    background-color: #bbb;
+}
+a {
+    color: lightgreen;
+    text-decoration: none;
+    &:hover {
+        text-decoration: underline;
+    }
+}

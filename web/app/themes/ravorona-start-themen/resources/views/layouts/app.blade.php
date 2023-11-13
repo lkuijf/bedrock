@@ -4,6 +4,8 @@
 
 @include('sections.header')
 
+<div class="contentWrapper">
+
   <main id="main" class="main">
     @yield('content')
   </main>
@@ -13,5 +15,7 @@
       @yield('sidebar')
     </aside>
   @endif
+
+</div>
 
 @include('sections.footer')
