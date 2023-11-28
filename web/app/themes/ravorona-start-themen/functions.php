@@ -31,6 +31,28 @@
 |
 */
 
+
+use Carbon_Fields\Container;
+use Carbon_Fields\Field;
+
+add_action( 'carbon_fields_register_fields', 'crb_attach_theme_options' );
+function crb_attach_theme_options() {
+    Container::make( 'theme_options', __( 'Theme Options', 'crb' ) )
+        ->add_fields( array(
+            Field::make( 'text', 'crb_text', 'Text Field' ),
+            Field::make( 'text', 'crb_text2', 'Text Field' ),
+        ) );
+}
+
+add_action( 'after_setup_theme', 'crb_load' );
+function crb_load() {
+    require_once( 'vendor/autoload.php' );
+    \Carbon_Fields\Carbon_Fields::boot();
+}
+
+
+
+
 use function Roots\bootloader;
 
 if (!file_exists($composer = __DIR__ . '/vendor/autoload.php')) {
@@ -85,3 +107,26 @@ collect(['setup', 'filters', 'helpers', 'medias'])
             );
         }
     });
+
+add_action( 'init', 'create_posttype_blog' );
+function create_posttype_blog() {
+    register_post_type( 'blog',
+        array(
+            'labels' => array(
+                'name' => __( 'Blog' ),
+                'singular_name' => __( 'Blog' ),
+                'add_new_item' => __( 'Add New Blog-item' ),
+                'add_new' => __( 'Add New Blog-item' ),
+                'edit_item' => __( 'Edit Blog-item' ),
+                'update_item' => __( 'Update Blog-item' ),
+            ),
+            'public' => true,
+            // 'has_archive' => true,
+            // 'rewrite' => array('slug' => 'movies'),
+            // 'show_in_rest' => true,
+            // 'supports'            => array( 'title', 'editor', 'excerpt', 'author', 'thumbnail', 'comments', 'revisions', 'custom-fields', ),
+            // 'supports'            => array( 'title'),
+            'supports'            => array('title', 'editor', 'comments', 'revisions', 'trackbacks', 'author', 'excerpt', 'page-attributes', 'thumbnail', 'custom-fields', 'post-formats'),
+            )
+    );
+}
